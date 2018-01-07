@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E418E29452309B3C5986362 /* Pods_AR_Jellyfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA31DBA90243288A9A73154 /* Pods_AR_Jellyfish.framework */; };
 		E21766AC1FFFE493007D7F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21766AB1FFFE493007D7F49 /* AppDelegate.swift */; };
 		E21766AE1FFFE493007D7F49 /* ARVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21766AD1FFFE493007D7F49 /* ARVC.swift */; };
 		E21766B11FFFE493007D7F49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21766AF1FFFE493007D7F49 /* Main.storyboard */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3FA31DBA90243288A9A73154 /* Pods_AR_Jellyfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_Jellyfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		944E2C54A7321A8C037E4ED9 /* Pods-AR-Jellyfish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR-Jellyfish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AR-Jellyfish/Pods-AR-Jellyfish.debug.xcconfig"; sourceTree = "<group>"; };
+		D71579333BCE9CE8F9BDEE57 /* Pods-AR-Jellyfish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AR-Jellyfish.release.xcconfig"; path = "Pods/Target Support Files/Pods-AR-Jellyfish/Pods-AR-Jellyfish.release.xcconfig"; sourceTree = "<group>"; };
 		E21766A81FFFE493007D7F49 /* AR-Jellyfish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR-Jellyfish.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E21766AB1FFFE493007D7F49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E21766AD1FFFE493007D7F49 /* ARVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVC.swift; sourceTree = "<group>"; };
@@ -33,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E418E29452309B3C5986362 /* Pods_AR_Jellyfish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1397060F232BF0341C10030B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3FA31DBA90243288A9A73154 /* Pods_AR_Jellyfish.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE07E5A7EA0DB6CBD65FD414 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				944E2C54A7321A8C037E4ED9 /* Pods-AR-Jellyfish.debug.xcconfig */,
+				D71579333BCE9CE8F9BDEE57 /* Pods-AR-Jellyfish.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E217669F1FFFE493007D7F49 = {
 			isa = PBXGroup;
 			children = (
 				E21766AA1FFFE493007D7F49 /* AR-Jellyfish */,
 				E21766A91FFFE493007D7F49 /* Products */,
+				DE07E5A7EA0DB6CBD65FD414 /* Pods */,
+				1397060F232BF0341C10030B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,9 +109,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E21766BA1FFFE493007D7F49 /* Build configuration list for PBXNativeTarget "AR-Jellyfish" */;
 			buildPhases = (
+				74A398A227FA77E2A1844C5F /* [CP] Check Pods Manifest.lock */,
 				E21766A41FFFE493007D7F49 /* Sources */,
 				E21766A51FFFE493007D7F49 /* Frameworks */,
 				E21766A61FFFE493007D7F49 /* Resources */,
+				D6EEF4DB65A432245016CBA3 /* [CP] Embed Pods Frameworks */,
+				CF8318BD9D9E949A7483F2E9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,6 +173,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		74A398A227FA77E2A1844C5F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CF8318BD9D9E949A7483F2E9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AR-Jellyfish/Pods-AR-Jellyfish-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6EEF4DB65A432245016CBA3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AR-Jellyfish/Pods-AR-Jellyfish-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E21766A41FFFE493007D7F49 /* Sources */ = {
@@ -288,6 +363,7 @@
 		};
 		E21766BB1FFFE493007D7F49 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 944E2C54A7321A8C037E4ED9 /* Pods-AR-Jellyfish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -303,6 +379,7 @@
 		};
 		E21766BC1FFFE493007D7F49 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D71579333BCE9CE8F9BDEE57 /* Pods-AR-Jellyfish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

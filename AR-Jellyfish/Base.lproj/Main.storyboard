@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--ARVC-->
         <scene sceneID="tne-QT-ifu">
@@ -43,25 +48,50 @@
                                     <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xsS-XB-Xgh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click play to start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHM-uQ-Vl1">
+                                <rect key="frame" x="68" y="44" width="238" height="23"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Brd-HW-Tt4">
+                                <rect key="frame" x="104" y="321" width="166" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="166" id="YdO-J8-Rz0"/>
+                                    <constraint firstAttribute="height" constant="170" id="dM0-7q-rdm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="38"/>
+                                <color key="textColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="kuI-GR-7z3" secondAttribute="bottom" constant="20" id="6Py-uo-MZE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kuI-GR-7z3" secondAttribute="trailing" constant="20" id="6zP-Ks-MMQ"/>
+                            <constraint firstItem="XHM-uQ-Vl1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="68" id="9yI-XP-n6s"/>
+                            <constraint firstItem="XHM-uQ-Vl1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BSx-LU-sNF"/>
                             <constraint firstItem="kb7-Gv-fxA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BUe-Kd-Xve"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kb7-Gv-fxA" secondAttribute="bottom" constant="-14" id="Ctq-li-gkI"/>
+                            <constraint firstItem="XHM-uQ-Vl1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FWY-lA-Ttw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Brd-HW-Tt4" secondAttribute="trailing" constant="105" id="M35-vz-LVR"/>
                             <constraint firstItem="kb7-Gv-fxA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ntz-dj-II2"/>
                             <constraint firstItem="Lwb-CK-fJl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="S2Y-Bu-kY1"/>
                             <constraint firstItem="Lwb-CK-fJl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TQE-uK-mNX"/>
                             <constraint firstAttribute="bottom" secondItem="kb7-Gv-fxA" secondAttribute="bottom" constant="20" id="YCK-FM-fMP"/>
                             <constraint firstAttribute="bottom" secondItem="Lwb-CK-fJl" secondAttribute="bottom" id="dJQ-dD-zX7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Brd-HW-Tt4" secondAttribute="bottom" constant="287" id="kP4-sI-ZNE"/>
                             <constraint firstItem="Lwb-CK-fJl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kfw-84-Yte"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XHM-uQ-Vl1" secondAttribute="trailing" constant="69" id="pyS-mc-08r"/>
+                            <constraint firstItem="Brd-HW-Tt4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="104" id="uYZ-lJ-IsK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="play" destination="kb7-Gv-fxA" id="3Yv-YA-Qbp"/>
+                        <outlet property="pointsLabel" destination="Brd-HW-Tt4" id="Ze1-eE-V07"/>
                         <outlet property="sceneView" destination="Lwb-CK-fJl" id="OuO-GL-T9f"/>
+                        <outlet property="timerLabel" destination="XHM-uQ-Vl1" id="S4I-D3-zSz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
