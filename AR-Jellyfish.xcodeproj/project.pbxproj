@@ -15,6 +15,14 @@
 		E21766B61FFFE493007D7F49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21766B41FFFE493007D7F49 /* LaunchScreen.storyboard */; };
 		E21766C11FFFF0C6007D7F49 /* Jellyfish.png in Resources */ = {isa = PBXBuildFile; fileRef = E21766C01FFFF0C5007D7F49 /* Jellyfish.png */; };
 		E21766C41FFFF176007D7F49 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = E21766C31FFFF176007D7F49 /* art.scnassets */; };
+		E26DCB2F201DF67B00C1FCEF /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB2E201DF67B00C1FCEF /* Timer.swift */; };
+		E26DCB31201DF71400C1FCEF /* Highscore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB30201DF71400C1FCEF /* Highscore.swift */; };
+		E26DCB33201F6B2500C1FCEF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB32201F6B2500C1FCEF /* Player.swift */; };
+		E26DCB352020EE4A00C1FCEF /* NodeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB342020EE4A00C1FCEF /* NodeCreator.swift */; };
+		E26DCB372020F0E900C1FCEF /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB362020F0E900C1FCEF /* RandomNumberGenerator.swift */; };
+		E26DCB392020F66300C1FCEF /* RunGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB382020F66300C1FCEF /* RunGame.swift */; };
+		E26DCB3B202105F300C1FCEF /* LblProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB3A202105F300C1FCEF /* LblProtocol.swift */; };
+		E26DCB3D2021211800C1FCEF /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB3C2021211800C1FCEF /* Level.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +38,14 @@
 		E21766B71FFFE493007D7F49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E21766C01FFFF0C5007D7F49 /* Jellyfish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Jellyfish.png; sourceTree = "<group>"; };
 		E21766C31FFFF176007D7F49 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		E26DCB2E201DF67B00C1FCEF /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		E26DCB30201DF71400C1FCEF /* Highscore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highscore.swift; sourceTree = "<group>"; };
+		E26DCB32201F6B2500C1FCEF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		E26DCB342020EE4A00C1FCEF /* NodeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCreator.swift; sourceTree = "<group>"; };
+		E26DCB362020F0E900C1FCEF /* RandomNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberGenerator.swift; sourceTree = "<group>"; };
+		E26DCB382020F66300C1FCEF /* RunGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGame.swift; sourceTree = "<group>"; };
+		E26DCB3A202105F300C1FCEF /* LblProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LblProtocol.swift; sourceTree = "<group>"; };
+		E26DCB3C2021211800C1FCEF /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,13 +98,14 @@
 		E21766AA1FFFE493007D7F49 /* AR-Jellyfish */ = {
 			isa = PBXGroup;
 			children = (
-				E21766AB1FFFE493007D7F49 /* AppDelegate.swift */,
 				E21766BF1FFFF0C5007D7F49 /* Textures */,
+				E26DCB2D201DF64300C1FCEF /* Class */,
 				E21766AD1FFFE493007D7F49 /* ARVC.swift */,
 				E21766AF1FFFE493007D7F49 /* Main.storyboard */,
-				E21766B21FFFE493007D7F49 /* Assets.xcassets */,
 				E21766B41FFFE493007D7F49 /* LaunchScreen.storyboard */,
 				E21766B71FFFE493007D7F49 /* Info.plist */,
+				E21766AB1FFFE493007D7F49 /* AppDelegate.swift */,
+				E21766B21FFFE493007D7F49 /* Assets.xcassets */,
 				E21766C31FFFF176007D7F49 /* art.scnassets */,
 			);
 			path = "AR-Jellyfish";
@@ -100,6 +117,21 @@
 				E21766C01FFFF0C5007D7F49 /* Jellyfish.png */,
 			);
 			path = Textures;
+			sourceTree = "<group>";
+		};
+		E26DCB2D201DF64300C1FCEF /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				E26DCB2E201DF67B00C1FCEF /* Timer.swift */,
+				E26DCB30201DF71400C1FCEF /* Highscore.swift */,
+				E26DCB32201F6B2500C1FCEF /* Player.swift */,
+				E26DCB342020EE4A00C1FCEF /* NodeCreator.swift */,
+				E26DCB362020F0E900C1FCEF /* RandomNumberGenerator.swift */,
+				E26DCB382020F66300C1FCEF /* RunGame.swift */,
+				E26DCB3A202105F300C1FCEF /* LblProtocol.swift */,
+				E26DCB3C2021211800C1FCEF /* Level.swift */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,8 +259,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E26DCB2F201DF67B00C1FCEF /* Timer.swift in Sources */,
 				E21766AE1FFFE493007D7F49 /* ARVC.swift in Sources */,
+				E26DCB352020EE4A00C1FCEF /* NodeCreator.swift in Sources */,
+				E26DCB31201DF71400C1FCEF /* Highscore.swift in Sources */,
+				E26DCB33201F6B2500C1FCEF /* Player.swift in Sources */,
+				E26DCB372020F0E900C1FCEF /* RandomNumberGenerator.swift in Sources */,
 				E21766AC1FFFE493007D7F49 /* AppDelegate.swift in Sources */,
+				E26DCB392020F66300C1FCEF /* RunGame.swift in Sources */,
+				E26DCB3D2021211800C1FCEF /* Level.swift in Sources */,
+				E26DCB3B202105F300C1FCEF /* LblProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
