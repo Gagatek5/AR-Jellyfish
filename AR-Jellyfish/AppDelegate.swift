@@ -15,7 +15,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        if  UserDefaults.standard.value(forKey: "UserName") == nil
+        {
+
+            let setNick = storyboard.instantiateViewController(withIdentifier: "SetNick") as! SetNickNameVC
+            self.window?.rootViewController = setNick
+            
+        }
+        else
+        {
+            //TabBarViews menu = storyboard.InstantiateViewController("menu") as TabBarViews;
+            //Window.RootViewController = menu;
+            
+            //StartLanguageView firstView = storyboard.InstantiateViewController("firstView") as StartLanguageView;
+           // Window.RootViewController = firstView;
+            let menu = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuVC
+            self.window?.rootViewController = menu
+            
+            
+        }
+
         
         return true
     }

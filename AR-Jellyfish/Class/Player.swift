@@ -12,6 +12,7 @@ class Player {
     let defaultsUserName = UserDefaults.standard
     
     public func SetNickName(nickName: String) {
+         let defaultsUserName = UserDefaults.standard
         defaultsUserName.set(nickName, forKey: "UserName")
         
     }

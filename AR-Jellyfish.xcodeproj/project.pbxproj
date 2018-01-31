@@ -23,6 +23,8 @@
 		E26DCB392020F66300C1FCEF /* RunGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB382020F66300C1FCEF /* RunGame.swift */; };
 		E26DCB3B202105F300C1FCEF /* LblProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB3A202105F300C1FCEF /* LblProtocol.swift */; };
 		E26DCB3D2021211800C1FCEF /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB3C2021211800C1FCEF /* Level.swift */; };
+		E26DCB402022246F00C1FCEF /* SetNickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB3F2022246F00C1FCEF /* SetNickNameVC.swift */; };
+		E26DCB42202224DB00C1FCEF /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB41202224DB00C1FCEF /* MenuVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		E26DCB382020F66300C1FCEF /* RunGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGame.swift; sourceTree = "<group>"; };
 		E26DCB3A202105F300C1FCEF /* LblProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LblProtocol.swift; sourceTree = "<group>"; };
 		E26DCB3C2021211800C1FCEF /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		E26DCB3F2022246F00C1FCEF /* SetNickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNickNameVC.swift; sourceTree = "<group>"; };
+		E26DCB41202224DB00C1FCEF /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +102,9 @@
 		E21766AA1FFFE493007D7F49 /* AR-Jellyfish */ = {
 			isa = PBXGroup;
 			children = (
+				E26DCB3E20221B9E00C1FCEF /* Views */,
 				E21766BF1FFFF0C5007D7F49 /* Textures */,
 				E26DCB2D201DF64300C1FCEF /* Class */,
-				E21766AD1FFFE493007D7F49 /* ARVC.swift */,
 				E21766AF1FFFE493007D7F49 /* Main.storyboard */,
 				E21766B41FFFE493007D7F49 /* LaunchScreen.storyboard */,
 				E21766B71FFFE493007D7F49 /* Info.plist */,
@@ -132,6 +136,16 @@
 				E26DCB3C2021211800C1FCEF /* Level.swift */,
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		E26DCB3E20221B9E00C1FCEF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E21766AD1FFFE493007D7F49 /* ARVC.swift */,
+				E26DCB3F2022246F00C1FCEF /* SetNickNameVC.swift */,
+				E26DCB41202224DB00C1FCEF /* MenuVC.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,8 +278,10 @@
 				E26DCB352020EE4A00C1FCEF /* NodeCreator.swift in Sources */,
 				E26DCB31201DF71400C1FCEF /* Highscore.swift in Sources */,
 				E26DCB33201F6B2500C1FCEF /* Player.swift in Sources */,
+				E26DCB42202224DB00C1FCEF /* MenuVC.swift in Sources */,
 				E26DCB372020F0E900C1FCEF /* RandomNumberGenerator.swift in Sources */,
 				E21766AC1FFFE493007D7F49 /* AppDelegate.swift in Sources */,
+				E26DCB402022246F00C1FCEF /* SetNickNameVC.swift in Sources */,
 				E26DCB392020F66300C1FCEF /* RunGame.swift in Sources */,
 				E26DCB3D2021211800C1FCEF /* Level.swift in Sources */,
 				E26DCB3B202105F300C1FCEF /* LblProtocol.swift in Sources */,
