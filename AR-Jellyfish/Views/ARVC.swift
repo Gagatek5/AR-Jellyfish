@@ -10,7 +10,7 @@ import UIKit
 import ARKit
 import Each
 
-class ARVC: UIViewController, LblProtocol {
+class ARVC: UIViewController {
 
     
 
@@ -43,10 +43,11 @@ class ARVC: UIViewController, LblProtocol {
     let checkScore = Highscore()
     let userName = Player()
     var nodeObject = NodeCreator()
+    let random = RandomNumberGenerator()
     //let runGame = RunGame()
     var level = Level()
     var currentLevel = Level.level.one
-    
+    var colour = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,15 +133,17 @@ class ARVC: UIViewController, LblProtocol {
     
     
     func addNodeToScene() {
+        colour = random.randomColourNode()
+        let bomb = random.randomCreateBombNode()
+        self.sceneView.scene.rootNode.addChildNode(nodeObject.addNode(colour: colour))
+        if bomb == 3
+        {
+          
+            self.sceneView.scene.rootNode.addChildNode(nodeObject.addNode(colour: bomb))
+        }
         
-        self.sceneView.scene.rootNode.addChildNode(nodeObject.addNode())
     }
-    func ChangeLbl(text: String) {
-        
-        //var labelArray = [pointsLabel, timerLabel]
-        timerLabel.text = text
-        
-    }
+
     @objc func handleTap(sender: UITapGestureRecognizer)
     {
         let sceneViewTappedOn = sender.view as! SCNView
@@ -148,11 +151,28 @@ class ARVC: UIViewController, LblProtocol {
         let hitTest = sceneViewTappedOn.hitTest(touchCoordinates)
         if !hitTest.isEmpty
         {
-            if countdown > 0{
+            let result = hitTest.first!
+            let node = result.node
+            
+            if node.name! == "Bomb"
+            {
+                countdown = 0
+                points = 0
                 
-                let result = hitTest.first!
-                let node = result.node
-                points += 1
+            }
+            
+            if countdown > 0{
+
+                switch colour {
+                case 0:
+                    points += 1
+                case 1:
+                    points += 3
+                case 2:
+                    points += 5
+                default:
+                    points += 0
+                }
                 restartTimer()
                 if node.animationKeys.isEmpty
                 {
@@ -174,7 +194,7 @@ class ARVC: UIViewController, LblProtocol {
         self.timer.perform { () -> NextStep in
             self.countdown -= 1
             self.timerLabel.text = "Time: " + String(self.countdown) + " Points: " + String(self.points)
-            if self.countdown == 0
+            if self.countdown <= 0
             {
                 self.timerLabel.text = String("You lose")
                 self.pointsLabel.text = "Your score: " + String(self.points)

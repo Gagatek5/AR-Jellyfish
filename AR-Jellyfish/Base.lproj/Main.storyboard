@@ -13,6 +13,7 @@
     <customFonts key="customFonts">
         <array key="AvenirNext.ttc">
             <string>AvenirNext-Bold</string>
+            <string>AvenirNext-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -24,10 +25,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J3o-e0-qnr">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J3o-e0-qnr">
                                 <rect key="frame" x="16" y="391" width="343" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="backgroundColor" red="0.18722975254058838" green="0.19625717401504517" blue="0.20410755276679993" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.83912670612335205" green="0.83926838636398315" blue="0.83910673856735229" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmU-Bi-Hgn">
@@ -141,6 +143,9 @@
                                         <state key="normal" title="Settings">
                                             <color key="titleColor" red="0.83912670609999995" green="0.83926838640000001" blue="0.83910673859999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="SG4-F3-Cp1" kind="show" id="D5u-uM-NLH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -415,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="118.96551724137932"/>
+            <point key="canvasLocation" x="-207" y="119"/>
         </scene>
     </scenes>
     <resources>
@@ -423,6 +428,7 @@
         <image name="Reset" width="102" height="102"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cxr-vU-fAQ"/>
+        <segue reference="r6M-5r-Q6t"/>
+        <segue reference="TGm-LF-M1Z"/>
     </inferredMetricsTieBreakers>
 </document>

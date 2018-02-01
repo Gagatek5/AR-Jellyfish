@@ -21,10 +21,11 @@
 		E26DCB352020EE4A00C1FCEF /* NodeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB342020EE4A00C1FCEF /* NodeCreator.swift */; };
 		E26DCB372020F0E900C1FCEF /* RandomNumberGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB362020F0E900C1FCEF /* RandomNumberGenerator.swift */; };
 		E26DCB392020F66300C1FCEF /* RunGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB382020F66300C1FCEF /* RunGame.swift */; };
-		E26DCB3B202105F300C1FCEF /* LblProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB3A202105F300C1FCEF /* LblProtocol.swift */; };
 		E26DCB3D2021211800C1FCEF /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB3C2021211800C1FCEF /* Level.swift */; };
 		E26DCB402022246F00C1FCEF /* SetNickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB3F2022246F00C1FCEF /* SetNickNameVC.swift */; };
 		E26DCB42202224DB00C1FCEF /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DCB41202224DB00C1FCEF /* MenuVC.swift */; };
+		E26DCB45202267C600C1FCEF /* green_Jellyfish.png in Resources */ = {isa = PBXBuildFile; fileRef = E26DCB43202267C500C1FCEF /* green_Jellyfish.png */; };
+		E26DCB46202267C600C1FCEF /* blue_Jellyfish.png in Resources */ = {isa = PBXBuildFile; fileRef = E26DCB44202267C600C1FCEF /* blue_Jellyfish.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,10 +47,11 @@
 		E26DCB342020EE4A00C1FCEF /* NodeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeCreator.swift; sourceTree = "<group>"; };
 		E26DCB362020F0E900C1FCEF /* RandomNumberGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberGenerator.swift; sourceTree = "<group>"; };
 		E26DCB382020F66300C1FCEF /* RunGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunGame.swift; sourceTree = "<group>"; };
-		E26DCB3A202105F300C1FCEF /* LblProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LblProtocol.swift; sourceTree = "<group>"; };
 		E26DCB3C2021211800C1FCEF /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		E26DCB3F2022246F00C1FCEF /* SetNickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNickNameVC.swift; sourceTree = "<group>"; };
 		E26DCB41202224DB00C1FCEF /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		E26DCB43202267C500C1FCEF /* green_Jellyfish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_Jellyfish.png; sourceTree = "<group>"; };
+		E26DCB44202267C600C1FCEF /* blue_Jellyfish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_Jellyfish.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,8 @@
 		E21766BF1FFFF0C5007D7F49 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				E26DCB44202267C600C1FCEF /* blue_Jellyfish.png */,
+				E26DCB43202267C500C1FCEF /* green_Jellyfish.png */,
 				E21766C01FFFF0C5007D7F49 /* Jellyfish.png */,
 			);
 			path = Textures;
@@ -132,7 +136,6 @@
 				E26DCB342020EE4A00C1FCEF /* NodeCreator.swift */,
 				E26DCB362020F0E900C1FCEF /* RandomNumberGenerator.swift */,
 				E26DCB382020F66300C1FCEF /* RunGame.swift */,
-				E26DCB3A202105F300C1FCEF /* LblProtocol.swift */,
 				E26DCB3C2021211800C1FCEF /* Level.swift */,
 			);
 			path = Class;
@@ -212,8 +215,10 @@
 			files = (
 				E21766C11FFFF0C6007D7F49 /* Jellyfish.png in Resources */,
 				E21766B61FFFE493007D7F49 /* LaunchScreen.storyboard in Resources */,
+				E26DCB46202267C600C1FCEF /* blue_Jellyfish.png in Resources */,
 				E21766C41FFFF176007D7F49 /* art.scnassets in Resources */,
 				E21766B31FFFE493007D7F49 /* Assets.xcassets in Resources */,
+				E26DCB45202267C600C1FCEF /* green_Jellyfish.png in Resources */,
 				E21766B11FFFE493007D7F49 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +289,6 @@
 				E26DCB402022246F00C1FCEF /* SetNickNameVC.swift in Sources */,
 				E26DCB392020F66300C1FCEF /* RunGame.swift in Sources */,
 				E26DCB3D2021211800C1FCEF /* Level.swift in Sources */,
-				E26DCB3B202105F300C1FCEF /* LblProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
