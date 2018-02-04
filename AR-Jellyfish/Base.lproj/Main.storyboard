@@ -198,9 +198,12 @@
                                             <constraint firstAttribute="height" constant="60" id="TQe-wC-gwr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
-                                        <state key="normal" title="Play single player mode">
+                                        <state key="normal" title="Tutorial">
                                             <color key="titleColor" red="0.83912670609999995" green="0.83926838640000001" blue="0.83910673859999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Oz4-LC-dun" kind="show" id="CkA-ML-uge"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXi-jC-mgo">
                                         <rect key="frame" x="0.0" y="152" width="343" height="60"/>
@@ -269,6 +272,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fng-iy-4K2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1076" y="118.96551724137932"/>
+        </scene>
+        <!--TutorialVC-->
+        <scene sceneID="3Fy-a8-0fe">
+            <objects>
+                <viewController id="Oz4-LC-dun" customClass="TutorialVC" customModule="AR_Jellyfish" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="haV-fL-rov">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DUe-lP-u24">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4A-81-We0">
+                                <rect key="frame" x="16" y="711" width="77" height="67"/>
+                                <state key="normal" backgroundImage="Play"/>
+                                <connections>
+                                    <segue destination="ZLP-12-2dF" kind="show" id="LtM-my-mmq"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJm-Hp-2I5">
+                                <rect key="frame" x="16" y="44" width="343" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="GTf-cl-cLP"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VJm-Hp-2I5" firstAttribute="top" secondItem="FaR-eC-NSy" secondAttribute="top" id="CTd-Na-DXM"/>
+                            <constraint firstItem="Z4A-81-We0" firstAttribute="top" secondItem="FaR-eC-NSy" secondAttribute="top" constant="667" id="LHM-GC-S4h"/>
+                            <constraint firstItem="Z4A-81-We0" firstAttribute="leading" secondItem="haV-fL-rov" secondAttribute="leadingMargin" id="NjS-v5-S7g"/>
+                            <constraint firstItem="DUe-lP-u24" firstAttribute="top" secondItem="haV-fL-rov" secondAttribute="top" id="VBH-LC-hCB"/>
+                            <constraint firstItem="Z4A-81-We0" firstAttribute="bottom" secondItem="FaR-eC-NSy" secondAttribute="bottom" id="Vvh-ig-Aec"/>
+                            <constraint firstItem="DUe-lP-u24" firstAttribute="leading" secondItem="FaR-eC-NSy" secondAttribute="leading" id="cxf-5w-kac"/>
+                            <constraint firstItem="DUe-lP-u24" firstAttribute="trailing" secondItem="FaR-eC-NSy" secondAttribute="trailing" id="hBH-4X-sf6"/>
+                            <constraint firstItem="VJm-Hp-2I5" firstAttribute="centerX" secondItem="DUe-lP-u24" secondAttribute="centerX" id="jzK-6L-Edi"/>
+                            <constraint firstItem="FaR-eC-NSy" firstAttribute="trailing" secondItem="Z4A-81-We0" secondAttribute="trailing" constant="282" id="kc0-K8-Zpp"/>
+                            <constraint firstItem="VJm-Hp-2I5" firstAttribute="leading" secondItem="Z4A-81-We0" secondAttribute="leading" id="xqp-Vj-8Ho"/>
+                            <constraint firstItem="FaR-eC-NSy" firstAttribute="bottom" secondItem="DUe-lP-u24" secondAttribute="bottom" constant="-34" id="zdx-fR-cyv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FaR-eC-NSy"/>
+                    </view>
+                    <connections>
+                        <outlet property="tutorialSceneView" destination="DUe-lP-u24" id="44R-lu-3Ic"/>
+                        <outlet property="tutorialTV" destination="VJm-Hp-2I5" id="RYw-XD-sSX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L93-L7-4TC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-215.19999999999999" y="138.91625615763547"/>
         </scene>
         <!--ARVC-->
         <scene sceneID="tne-QT-ifu">
@@ -524,7 +580,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-207.19999999999999" y="118.96551724137932"/>
+            <point key="canvasLocation" x="-180" y="817"/>
         </scene>
     </scenes>
     <resources>
@@ -532,6 +588,6 @@
         <image name="Reset" width="102" height="102"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cxr-vU-fAQ"/>
+        <segue reference="LtM-my-mmq"/>
     </inferredMetricsTieBreakers>
 </document>

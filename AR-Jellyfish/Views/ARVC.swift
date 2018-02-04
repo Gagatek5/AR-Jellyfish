@@ -63,9 +63,6 @@ class ARVC: UIViewController, GADInterstitialDelegate {
         super.viewDidLoad()
         let request = GADRequest()
         request.testDevices = ["e098db6da62dd89b815fbb21837caeeb"]
-        //        interstitial = GADInterstitial(adUnitID: "ca-app-pub-5264924694211893/5195398237")
-        //        let request = GADRequest()
-        //        interstitial.load(request)
         checkScore.highscores(points: points, nickName: "none")
         self.menuView.isHidden = true
         self.restart.isEnabled = false

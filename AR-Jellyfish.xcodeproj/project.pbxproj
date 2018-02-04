@@ -16,6 +16,7 @@
 		E21766C11FFFF0C6007D7F49 /* Jellyfish.png in Resources */ = {isa = PBXBuildFile; fileRef = E21766C01FFFF0C5007D7F49 /* Jellyfish.png */; };
 		E21766C41FFFF176007D7F49 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = E21766C31FFFF176007D7F49 /* art.scnassets */; };
 		E226ED82202711F6002A11ED /* TargetPositionNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E226ED81202711F6002A11ED /* TargetPositionNodes.swift */; };
+		E226ED8620275E28002A11ED /* TutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E226ED8520275E28002A11ED /* TutorialVC.swift */; };
 		E249E1902023D33D00A04AC1 /*  PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E249E18F2023D33D00A04AC1 /*  PurchaseManager.swift */; };
 		E249E1922023DF9B00A04AC1 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E249E1912023DF9B00A04AC1 /* SettingVC.swift */; };
 		E262B2512023AEA900148F4F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E262B2502023AEA900148F4F /* StoreKit.framework */; };
@@ -46,6 +47,7 @@
 		E21766C01FFFF0C5007D7F49 /* Jellyfish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Jellyfish.png; sourceTree = "<group>"; };
 		E21766C31FFFF176007D7F49 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		E226ED81202711F6002A11ED /* TargetPositionNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetPositionNodes.swift; sourceTree = "<group>"; };
+		E226ED8520275E28002A11ED /* TutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialVC.swift; sourceTree = "<group>"; };
 		E249E18F2023D33D00A04AC1 /*  PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " PurchaseManager.swift"; sourceTree = "<group>"; };
 		E249E1912023DF9B00A04AC1 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		E262B2502023AEA900148F4F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -168,6 +170,7 @@
 				E26DCB3F2022246F00C1FCEF /* SetNickNameVC.swift */,
 				E26DCB41202224DB00C1FCEF /* MenuVC.swift */,
 				E249E1912023DF9B00A04AC1 /* SettingVC.swift */,
+				E226ED8520275E28002A11ED /* TutorialVC.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				E26DCB2F201DF67B00C1FCEF /* Timer.swift in Sources */,
 				E226ED82202711F6002A11ED /* TargetPositionNodes.swift in Sources */,
 				E21766AE1FFFE493007D7F49 /* ARVC.swift in Sources */,
+				E226ED8620275E28002A11ED /* TutorialVC.swift in Sources */,
 				E26DCB352020EE4A00C1FCEF /* NodeCreator.swift in Sources */,
 				E26DCB31201DF71400C1FCEF /* Highscore.swift in Sources */,
 				E26DCB33201F6B2500C1FCEF /* Player.swift in Sources */,
