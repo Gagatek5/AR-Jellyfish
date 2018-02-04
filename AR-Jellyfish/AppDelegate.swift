@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-
-
+	
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-5264924694211893~7612085695")//"ca-app-pub-5264924694211893~7612085695")
+        PurchaseManager.instance.fetchProducts()
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        
         if  UserDefaults.standard.value(forKey: "UserName") == nil
         {
 

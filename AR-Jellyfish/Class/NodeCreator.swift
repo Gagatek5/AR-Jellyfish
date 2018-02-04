@@ -8,24 +8,38 @@
 
 import Foundation
 import ARKit
+
 class NodeCreator {
     var random = RandomNumberGenerator()
-    var NodesArray = ["art.scnassets/Jellyfish.scn", "art.scnassets/blue_Jellyfish.scn", "art.scnassets/green_Jellyfish.scn", "art.scnassets/bomb.scn" ]
-    public func addNode(colour: Int)-> SCNNode {
-        if colour <= 2
+    var nodesChildArray = ["Jellyfish", "Jellyfish_blue", "Jellyfish_green", "Bomb", "Coin", "Clock" ]
+    public func addNode(colour: Int, generateBy: String )-> SCNNode {
+        
+        if generateBy == "Random"
         {
-        let jellyFishScene = SCNScene(named: NodesArray[colour])
-        let jellyFishNode = jellyFishScene?.rootNode.childNode(withName: "Jellyfish", recursively: false)
-        jellyFishNode?.position = SCNVector3(random.randomNumber(firstNum: -1, secondNum: 1), random.randomNumber(firstNum: -0.5, secondNum: 0.5), random.randomNumber(firstNum: -1, secondNum: 1))
+            
+            let jellyFishScene = SCNScene(named: "art.scnassets/Nodes.scn")
+            let jellyFishNode = jellyFishScene?.rootNode.childNode(withName:nodesChildArray[colour] , recursively: false)
+            jellyFishNode?.position = SCNVector3(random.randomNumber(firstNum: -1, secondNum: 1), random.randomNumber(firstNum: -0.5, secondNum: 0.5), random.randomNumber(firstNum: -1, secondNum: 1))
             return jellyFishNode!
-        } else //if colour == 3
-        {
-            let bombScene = SCNScene(named: NodesArray[colour])
-            let bombNode = bombScene?.rootNode.childNode(withName: "Bomb", recursively: false)
-            bombNode?.position = SCNVector3(random.randomNumber(firstNum: -1, secondNum: 1), random.randomNumber(firstNum: -0.5, secondNum: 0.5), random.randomNumber(firstNum: -1, secondNum: 1))
-            return bombNode!
+            
         }
+        else  if generateBy == "Target"
+        {
+            
+            let jellyFishScene = SCNScene(named: "art.scnassets/Nodes.scn")
+            let jellyFishNode = jellyFishScene?.rootNode.childNode(withName:nodesChildArray[colour] , recursively: false)
+            jellyFishNode?.position = SCNVector3(random.randomNumber(firstNum: -1, secondNum: 1), random.randomNumber(firstNum: -0.5, secondNum: 0.5), random.randomNumber(firstNum: -1, secondNum: 1))
+            return jellyFishNode!
+            
+        }
+        
+        let jellyFishScene = SCNScene(named: "art.scnassets/Nodes.scn")
+        let jellyFishNode = jellyFishScene?.rootNode.childNode(withName:nodesChildArray[colour] , recursively: false)
+        jellyFishNode?.position = SCNVector3(random.randomNumber(firstNum: -1, secondNum: 1), random.randomNumber(firstNum: -0.5, secondNum: 0.5), random.randomNumber(firstNum: -1, secondNum: 1))
+        return jellyFishNode!
     }
+        
+    
    public func animationNode(node: SCNNode){
         
         let spin = CABasicAnimation(keyPath: "position")
@@ -38,3 +52,4 @@ class NodeCreator {
     }
     
 }
+

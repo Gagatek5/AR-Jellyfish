@@ -9,49 +9,63 @@
 import UIKit
 import ARKit
 import Each
+import GoogleMobileAds
 
-class ARVC: UIViewController {
-
+class ARVC: UIViewController, GADInterstitialDelegate {
     
-
+    
+    
     var timer = Each(1).seconds
     var countdown = 10
     var points = 0
     var clicked = false
-    
+    //Ad
+    var interstitial: GADInterstitial!
     //HighScores Label
     @IBOutlet weak var H1: UILabel!
     @IBOutlet weak var H2: UILabel!
     @IBOutlet weak var H3: UILabel!
     @IBOutlet weak var H4: UILabel!
     @IBOutlet weak var H5: UILabel!
+    //NickName Label
     @IBOutlet weak var N1: UILabel!
     @IBOutlet weak var N2: UILabel!
     @IBOutlet weak var N3: UILabel!
     @IBOutlet weak var N4: UILabel!
     @IBOutlet weak var N5: UILabel!
-    
+    //Butons
+    @IBOutlet weak var play: UIButton!
     @IBOutlet weak var restart: UIButton!
     @IBOutlet weak var menu: UIButton!
+    // View
     @IBOutlet weak var menuView: UIView!
+    // Labels
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var play: UIButton!
+    //AR View
     @IBOutlet weak var sceneView: ARSCNView!
     
     let configuration = ARWorldTrackingConfiguration()
     let checkScore = Highscore()
-    let userName = Player()
+    let playerStats = Player()
     var nodeObject = NodeCreator()
     let random = RandomNumberGenerator()
+    
     //let runGame = RunGame()
     var level = Level()
     var currentLevel = Level.level.one
     var colour = 0
-
+    var coin = 0
+    var ad = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print( UserDefaults.standard.value(forKey: "UserName") as! String)
+        let request = GADRequest()
+        request.testDevices = ["e098db6da62dd89b815fbb21837caeeb"]
+        //        interstitial = GADInterstitial(adUnitID: "ca-app-pub-5264924694211893/5195398237")
+        //        let request = GADRequest()
+        //        interstitial.load(request)
         checkScore.highscores(points: points, nickName: "none")
         self.menuView.isHidden = true
         self.restart.isEnabled = false
@@ -61,20 +75,35 @@ class ARVC: UIViewController {
         self.sceneView.addGestureRecognizer(tapGestureRecognizer)
         loadHighScore()
         roundView()
+        interstitial = createAndLoadInterstitial()
+        //interstitial.delegate = self
     }
-
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-5264924694211893/5195398237")
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        
+        return interstitial
+    }
+    
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        interstitial = createAndLoadInterstitial()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func roundView()
     {
         menuView.layer.cornerRadius = 20
     }
-
-
-
+    
+    
+    
     @IBAction func play(_ sender: Any) {
         setTimer()
         self.addNodeToScene()
@@ -86,7 +115,7 @@ class ARVC: UIViewController {
     }
     
     @IBAction func reset(_ sender: Any) {
-         self.timer.stop()
+        self.timer.stop()
         restartTimer()
         self.play.isEnabled = true
         points = 0
@@ -98,7 +127,7 @@ class ARVC: UIViewController {
         self.sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         self.pointsLabel.isHidden = true
         self.timerLabel.text = "Click play to start"
-        self.menu.isEnabled = true
+        self.menu.isEnabled = true // wygląd przycisku
         
     }
     
@@ -135,17 +164,24 @@ class ARVC: UIViewController {
     func addNodeToScene() {
         colour = random.randomColourNode()
         let bomb = random.randomCreateBombNode()
-        self.sceneView.scene.rootNode.addChildNode(nodeObject.addNode(colour: colour))
-        if bomb == 3
-        {
-          
-            self.sceneView.scene.rootNode.addChildNode(nodeObject.addNode(colour: bomb))
+        let coin = random.randomCreateCoinNode()
+        let clock = random.randomCreateClockNode()
+        self.sceneView.scene.rootNode.addChildNode(nodeObject.addNode(colour: colour, generateBy: "Random"))
+        if bomb == 3{
+            self.sceneView.scene.rootNode.addChildNode(nodeObject.addNode(colour: bomb, generateBy: "Random"))
+        }
+        if coin == 4{
+            self.sceneView.scene.rootNode.addChildNode(nodeObject.addNode(colour: coin, generateBy: "Random"))
+        }
+        if clock == 5{
+            self.sceneView.scene.rootNode.addChildNode(nodeObject.addNode(colour: clock, generateBy: "Random"))
         }
         
     }
-
+    
     @objc func handleTap(sender: UITapGestureRecognizer)
     {
+        let tabel = nodeObject.nodesChildArray
         let sceneViewTappedOn = sender.view as! SCNView
         let touchCoordinates = sender.location(in: sceneViewTappedOn)
         let hitTest = sceneViewTappedOn.hitTest(touchCoordinates)
@@ -161,35 +197,61 @@ class ARVC: UIViewController {
                 
             }
             
+            
             if countdown > 0{
-
-                switch colour {
-                case 0:
+                
+                switch  node.name! {
+                case tabel[0]:
                     points += 1
-                case 1:
+                case tabel[1]:
                     points += 3
-                case 2:
+                case tabel[2]:
                     points += 5
+                case tabel[4]:
+                    coin += 1
+                    print("coin= " + String(coin))
+                case tabel[5]:
+                    countdown += 5
+                    print("time= " + String(countdown))
                 default:
                     points += 0
                 }
-                restartTimer()
+                
                 if node.animationKeys.isEmpty
                 {
+                    for index in 0...5
+                    {
+                        //  print("index: " + String(index))
+                        if node.name! == tabel[index] && countdown == 1
+                        {
+                            self.countdown += 1
+                        }
+                        
+                    }
+                    
+                    
                     SCNTransaction.begin()
                     nodeObject.animationNode(node: node)
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                     SCNTransaction.completionBlock = {
                         node.removeFromParentNode()
-                        self.addNodeToScene()
-                        self.currentLevel = self.level.SelectLevel(points: self.points)
-                        self.restartTimer()
+                        for index in 0...2
+                        {
+                            if node.name! == tabel[index]
+                            {
+                                
+                                self.addNodeToScene()
+                                self.currentLevel = self.level.SelectLevel(points: self.points)
+                                self.restartTimer()
+                            }
+                        }
                     }
                     SCNTransaction.commit()
                 }
             }
         }
     }
+    
     func setTimer(){
         self.timer.perform { () -> NextStep in
             self.countdown -= 1
@@ -201,6 +263,9 @@ class ARVC: UIViewController {
                 self.pointsLabel.isHidden = false
                 self.checkScore.highscores(points: self.points, nickName: UserDefaults.standard.value(forKey: "UserName") as! String)
                 self.menu.isEnabled = true
+                self.showAdd()
+                self.playerStats.updateCoin(coins: self.coin)
+                self.coin = 0
                 return .stop
             }
             return .continue
@@ -209,19 +274,24 @@ class ARVC: UIViewController {
     func restartTimer() {
         
         switch currentLevel {
-            case Level.level.one:
-                self.countdown = 10
-            case Level.level.two:
-                self.countdown = 8
-            case Level.level.three:
-                self.countdown = 7
-            case Level.level.four:
-                self.countdown = 6
-            case Level.level.five:
-                self.countdown = 5
+        case Level.level.one:
+            self.countdown = 10
+        case Level.level.two:
+            self.countdown = 8
+        case Level.level.three:
+            self.countdown = 7
+        case Level.level.four:
+            self.countdown = 6
+        case Level.level.five:
+            self.countdown = 5
         }
     }
-
-    
+    func showAdd(){
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready" + String(ad))
+        }
+    }
 }
 

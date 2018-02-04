@@ -9,11 +9,12 @@
 import Foundation
 
 class Player {
-    let defaultsUserName = UserDefaults.standard
     
-    public func SetNickName(nickName: String) {
-         let defaultsUserName = UserDefaults.standard
-        defaultsUserName.set(nickName, forKey: "UserName")
+    public func updateCoin(coins: Int) {
+        
+        let oldStatusCoin: Int = UserDefaults.standard.value(forKey: "Coin")! as! Int
+       UserDefaults.standard.set((oldStatusCoin + coins), forKey: "Coin")
+
         
     }
 }

@@ -24,7 +24,7 @@ class SetNickNameVC: UIViewController {
     }
     @IBAction func setNickName(_ sender: Any) {
         defaultsUserName.set(inputTF.text, forKey: "UserName")
-        print(defaultsUserName.value(forKey: "UserName"))
+        //print(defaultsUserName.value(forKey: "UserName"))
     }
     
 

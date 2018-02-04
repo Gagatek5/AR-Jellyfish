@@ -21,16 +21,14 @@ class Level {
     public func SelectLevel(points: Int) -> level
     {
         switch points {
-        case 0...5:
+        case 0...20:
             return level.one
-        case 6...10:
+        case 21...35:
             return level.two
-        case 11...20:
+        case 36...50:
             return level.three
-        case 21...30:
+        case 51...80:
             return level.four
-        case 31...50:
-            return level.five
         default:
             return level.five
         }

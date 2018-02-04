@@ -16,11 +16,11 @@ class RandomNumberGenerator
     }
     func randomColourNode() -> Int
     {
-        let percent = Int(arc4random_uniform(101))
+        let percent = Int(arc4random_uniform(10))
         switch percent {
-        case 51...75:
+        case 7...9:
             return 1
-        case 76...100:
+        case 10:
             return 2
         default:
             return 0
@@ -28,16 +28,35 @@ class RandomNumberGenerator
     }
     func randomCreateBombNode() -> Int
     {
-        let percent = Int(arc4random_uniform(101))
-        
-        if percent > 75
-        {
+        let percent = Int(arc4random_uniform(4))
+        switch percent {
+        case 1:
             return 3
-
-        }
-        else
-        {
+        default:
             return 0
         }
+        
+    }
+    func randomCreateCoinNode() -> Int
+    {
+        let percent = Int(arc4random_uniform(10))
+        switch percent {
+        case 1:
+            return 4
+        default:
+            return 0
+        }
+        
+    }
+    func randomCreateClockNode() -> Int
+    {
+        let percent = Int(arc4random_uniform(3))
+        switch percent {
+        case 1:
+            return 5
+        default:
+            return 0
+        }
+        
     }
 }
