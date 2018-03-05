@@ -32,5 +32,5 @@ class Level {
         default:
             return level.five
         }
-}
+    }
 }

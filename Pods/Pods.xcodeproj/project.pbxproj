@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,10 +27,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		041B008D54FDCC7090BE0391CD3DE190 /* Each.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Each.modulemap; sourceTree = "<group>"; };
+		041B008D54FDCC7090BE0391CD3DE190 /* Each.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Each.modulemap; sourceTree = "<group>"; };
 		129E59FED9167F49BA90037F56FE28AE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1678B436624A1AD48D9C508EF185E2D3 /* Each.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Each.framework; path = Each.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		417249157FEBD456C0D7B4FDC8D61DFA /* Pods-AR-Jellyfish.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-AR-Jellyfish.modulemap"; sourceTree = "<group>"; };
+		1678B436624A1AD48D9C508EF185E2D3 /* Each.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Each.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		417249157FEBD456C0D7B4FDC8D61DFA /* Pods-AR-Jellyfish.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-AR-Jellyfish.modulemap"; sourceTree = "<group>"; };
 		43F9D2E7D5168F54316616B41377D595 /* Pods-AR-Jellyfish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR-Jellyfish.debug.xcconfig"; sourceTree = "<group>"; };
 		476C04C52804BB9F0BC6C2A67F29E98C /* Each.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Each.swift; path = Sources/Each.swift; sourceTree = "<group>"; };
 		489D9CD4D731FB0B72EDBE5F6052F5A4 /* Each-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Each-prefix.pch"; sourceTree = "<group>"; };
@@ -44,8 +44,8 @@
 		7D0D1A85BEA049AC8007BF1984C92BD0 /* Pods-AR-Jellyfish-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AR-Jellyfish-dummy.m"; sourceTree = "<group>"; };
 		7F8CFE219EB8D3E0DF9F834E3418D624 /* Each-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Each-umbrella.h"; sourceTree = "<group>"; };
 		91C78B98D4D00165EEB277E18502AC75 /* Pods-AR-Jellyfish-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AR-Jellyfish-acknowledgements.markdown"; sourceTree = "<group>"; };
-		924EA9A72228C178EDE046EC3BB99889 /* Pods_AR_Jellyfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AR_Jellyfish.framework; path = "Pods-AR-Jellyfish.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		924EA9A72228C178EDE046EC3BB99889 /* Pods_AR_Jellyfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AR_Jellyfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B5903CDEB32C8EE8365831822F3BB460 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D38FEB78D9AE584E5DAB1FA31D4EE344 /* Pods-AR-Jellyfish-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AR-Jellyfish-umbrella.h"; sourceTree = "<group>"; };
 		E5EB2F097620F53041224AB9401D8F3F /* Pods-AR-Jellyfish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AR-Jellyfish.release.xcconfig"; sourceTree = "<group>"; };
@@ -98,7 +98,6 @@
 			children = (
 				7D4986DB3180E8F421A1C7576D5E0684 /* Frameworks */,
 			);
-			name = "Google-Mobile-Ads-SDK";
 			path = "Google-Mobile-Ads-SDK";
 			sourceTree = "<group>";
 		};
@@ -170,7 +169,6 @@
 				476C04C52804BB9F0BC6C2A67F29E98C /* Each.swift */,
 				131F88678A6FD951074FC8574DC9661C /* Support Files */,
 			);
-			name = Each;
 			path = Each;
 			sourceTree = "<group>";
 		};

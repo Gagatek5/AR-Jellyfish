@@ -12,10 +12,11 @@ import Each
 
 class TutorialVC: UIViewController {
 
-    var timer = Each(1).seconds
+    
     @IBOutlet weak var tutorialSceneView: ARSCNView!
     @IBOutlet weak var tutorialTV: UITextView!
-    
+    let sound = SoundsEfect()
+    let soundFile = SoundFile()
     let configuration = ARWorldTrackingConfiguration()
     
     var nodeObject = NodeCreator()
@@ -33,6 +34,9 @@ class TutorialVC: UIViewController {
         addNodeToScene()
 
         // Do any additional setup after loading the view.
+    }
+    @IBAction func buttonSound(_ sender: Any) {
+        sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
     }
     func addNodeToScene() {
         
@@ -75,36 +79,35 @@ class TutorialVC: UIViewController {
                 
                 SCNTransaction.begin()
                 nodeObject.animationNode(node: node)
+                 switch  chapter{
+                case 0:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                case 1:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                case 2:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                case 3:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 1), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                case 4:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 6), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                case 5:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 5), fileExtension: soundFile.FileExtension(fileNumber: 0))
+                default:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                }
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 SCNTransaction.completionBlock = {
                     node.removeFromParentNode()
                     if self.chapter < 6 {
-                    self.chapter += 1
-                    self.addNodeToScene()
-                        
+                        self.chapter += 1
+                        self.addNodeToScene()
                     }
                 }
                 SCNTransaction.commit()
             }
         }
     }
-    func setTimer(){
-        self.timer.perform { () -> NextStep in
-            self.countdown -= 1
-            
-            if self.countdown <= 0
-            {
-                
-                return .stop
-            }
-            return .continue
-        }
-    }
-    func restartTimer() {
-
-            self.countdown = 10
-    
-    }
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

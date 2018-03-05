@@ -11,7 +11,7 @@ import ARKit
 
 class NodeCreator {
     var random = RandomNumberGenerator()
-    var nodesChildArray = ["Jellyfish", "Jellyfish_blue", "Jellyfish_green", "Bomb", "Coin", "Clock", "text_Chapter1" ]
+    var nodesChildArray = ["GreenFish", "RedFish", "BlueFish", "Bomb", "Coin", "Clock"]
     public func addNode(colour: Int, generateBy: String )-> SCNNode {
         
         if generateBy == "Random"
@@ -36,7 +36,7 @@ class NodeCreator {
             
             let jellyFishScene = SCNScene(named: "art.scnassets/Nodes.scn")
             let jellyFishNode = jellyFishScene?.rootNode.childNode(withName:nodesChildArray[colour] , recursively: false)
-            jellyFishNode?.position = SCNVector3(-0.5,0.5,-1.5)
+            jellyFishNode?.position = SCNVector3(-0.2,0.2,-0.5)
             return jellyFishNode!
         }
         

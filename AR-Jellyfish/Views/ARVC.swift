@@ -10,11 +10,17 @@ import UIKit
 import ARKit
 import Each
 import GoogleMobileAds
+import AVFoundation
 
 class ARVC: UIViewController, GADInterstitialDelegate {
     
-    
-    
+    //sounds
+    let soundFile = SoundFile()
+    let sound = SoundsEfect()
+    let soundBomb = SoundsEfect()
+
+    var player: AVAudioPlayer?
+    //timer
     var timer = Each(1).seconds
     var countdown = 10
     var points = 0
@@ -75,7 +81,9 @@ class ARVC: UIViewController, GADInterstitialDelegate {
         interstitial = createAndLoadInterstitial()
         //interstitial.delegate = self
     }
-    
+    @IBAction func buttonSound(_ sender: Any) {
+        sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+    }
     func createAndLoadInterstitial() -> GADInterstitial {
         
         let interstitial = GADInterstitial(adUnitID: "ca-app-pub-5264924694211893/5195398237")
@@ -189,6 +197,7 @@ class ARVC: UIViewController, GADInterstitialDelegate {
             
             if node.name! == "Bomb"
             {
+                soundBomb.playSound(fileName: soundFile.FileName(fileNumber: 1), fileExtension: soundFile.FileExtension(fileNumber: 1))
                 countdown = 0
                 points = 0
                 
@@ -199,17 +208,20 @@ class ARVC: UIViewController, GADInterstitialDelegate {
                 
                 switch  node.name! {
                 case tabel[0]:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
                     points += 1
                 case tabel[1]:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
                     points += 3
                 case tabel[2]:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
                     points += 5
                 case tabel[4]:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 6), fileExtension: soundFile.FileExtension(fileNumber: 1))
                     coin += 1
-                    print("coin= " + String(coin))
                 case tabel[5]:
+                    sound.playSound(fileName: soundFile.FileName(fileNumber: 5), fileExtension: soundFile.FileExtension(fileNumber: 1))
                     countdown += 5
-                    print("time= " + String(countdown))
                 default:
                     points += 0
                 }
@@ -232,6 +244,7 @@ class ARVC: UIViewController, GADInterstitialDelegate {
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                     SCNTransaction.completionBlock = {
                         node.removeFromParentNode()
+                        
                         for index in 0...2
                         {
                             if node.name! == tabel[index]
@@ -255,12 +268,16 @@ class ARVC: UIViewController, GADInterstitialDelegate {
             self.timerLabel.text = "Time: " + String(self.countdown) + " Points: " + String(self.points)
             if self.countdown <= 0
             {
+                self.sound.playSound(fileName: self.soundFile.FileName(fileNumber: 7), fileExtension: self.soundFile.FileExtension(fileNumber: 1))
                 self.timerLabel.text = String("You lose")
                 self.pointsLabel.text = "Your score: " + String(self.points)
                 self.pointsLabel.isHidden = false
                 self.checkScore.highscores(points: self.points, nickName: UserDefaults.standard.value(forKey: "UserName") as! String)
                 self.menu.isEnabled = true
-                self.showAdd()
+                if UserDefaults.standard.bool(forKey: PurchaseManager.instance.IAP_REMOVE_ADS) == false
+                {
+                    self.showAdd()
+                }
                 self.playerStats.updateCoin(coins: self.coin)
                 self.coin = 0
                 return .stop
@@ -284,6 +301,7 @@ class ARVC: UIViewController, GADInterstitialDelegate {
         }
     }
     func showAdd(){
+
         if interstitial.isReady {
             interstitial.present(fromRootViewController: self)
         } else {

@@ -11,12 +11,16 @@ import GoogleMobileAds
 
 class MenuVC: UIViewController, GADBannerViewDelegate {
 
-
+    let sound = SoundsEfect()
+    let soundFile = SoundFile()
     @IBOutlet weak var CoinLabel: UILabel!
     @IBOutlet weak var banner: GADBannerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.value(forKey: "Coin") != nil
+        {
         CoinLabel.text = " Coins: " + String(describing: UserDefaults.standard.value(forKey: "Coin")!)
+        }
         if UserDefaults.standard.bool(forKey: PurchaseManager.instance.IAP_REMOVE_ADS)
         {
             banner.removeFromSuperview()
@@ -32,7 +36,9 @@ class MenuVC: UIViewController, GADBannerViewDelegate {
         }
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func buttonSound(_ sender: Any) {
+        sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

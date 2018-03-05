@@ -11,6 +11,8 @@ typealias CompletionHandler = (_ success: Bool) -> ()
 import Foundation
 import StoreKit
 
+
+
 class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     static let instance = PurchaseManager()

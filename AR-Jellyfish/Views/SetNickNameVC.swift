@@ -7,35 +7,49 @@
 //
 
 import UIKit
+import AVFoundation
 
-class SetNickNameVC: UIViewController {
-    let defaultsUserName = UserDefaults.standard
+
+class SetNickNameVC: UIViewController, UITextFieldDelegate {
     
+    let defaultsUserName = UserDefaults.standard
+    var player: AVAudioPlayer?
+    
+    let soundFile = SoundFile()
+    let sound = SoundsEfect()
+    
+    @IBOutlet weak var InfoL: UILabel!
     @IBOutlet weak var inputTF: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UIScreen.main.bounds.size.height <= 568{
+            InfoL.font = InfoL.font.withSize(45)
+        } else if UIScreen.main.bounds.size.height <= 667
+        {
+            InfoL.font = InfoL.font.withSize(48)
+        }
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
-        // Do any additional setup after loading the view.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func setNickName(_ sender: Any) {
-        defaultsUserName.set(inputTF.text, forKey: "UserName")
-        //print(defaultsUserName.value(forKey: "UserName"))
-    }
     
+    @IBAction func setNickName(_ sender: Any) {
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+        defaultsUserName.set(inputTF.text, forKey: "UserName")
     }
-    */
+ 
 
 }

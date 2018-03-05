@@ -11,8 +11,11 @@ import Foundation
 class Player {
     
     public func updateCoin(coins: Int) {
-        
-        let oldStatusCoin: Int = UserDefaults.standard.value(forKey: "Coin")! as! Int
+        var oldStatusCoin: Int = 0
+        if UserDefaults.standard.value(forKey: "Coin") != nil
+        {
+             oldStatusCoin = UserDefaults.standard.value(forKey: "Coin")! as! Int
+        }
        UserDefaults.standard.set((oldStatusCoin + coins), forKey: "Coin")
 
         

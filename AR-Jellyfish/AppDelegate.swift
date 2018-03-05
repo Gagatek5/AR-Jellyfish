@@ -8,36 +8,33 @@
 
 import UIKit
 import GoogleMobileAds
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
     var window: UIWindow?
-	
+	var BackgroundSound = SoundsEfect()
+    var soundFile = SoundFile()
+   
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-5264924694211893~7612085695")//"ca-app-pub-5264924694211893~7612085695")
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-5264924694211893~7612085695")
         PurchaseManager.instance.fetchProducts()
+        UserDefaults.standard.setValue(Bool(true), forKey: "Sound")
+        UserDefaults.standard.setValue(Bool(true), forKey: "Music")
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if  UserDefaults.standard.value(forKey: "UserName") == nil
         {
-
             let setNick = storyboard.instantiateViewController(withIdentifier: "SetNick") as! SetNickNameVC
             self.window?.rootViewController = setNick
-            
         }
         else
         {
-            //TabBarViews menu = storyboard.InstantiateViewController("menu") as TabBarViews;
-            //Window.RootViewController = menu;
-            
-            //StartLanguageView firstView = storyboard.InstantiateViewController("firstView") as StartLanguageView;
-           // Window.RootViewController = firstView;
             let menu = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuVC
             self.window?.rootViewController = menu
-            
-            
         }
+        
+       playSound()
 
         
         return true
@@ -63,6 +60,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    func playSound(){
+        
+        if (UserDefaults.standard.value(forKey: "Music")! as! Bool == true)
+        {
+            BackgroundSound.playSound(fileName: soundFile.FileName(fileNumber: 0), fileExtension: soundFile.FileExtension(fileNumber: 0), loop: true)
+            
+        }
+    }
+    func stopMusic(){
+        BackgroundSound.player?.stop()
     }
 
 
