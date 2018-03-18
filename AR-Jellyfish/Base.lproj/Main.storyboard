@@ -169,12 +169,28 @@
                                     <action selector="buttonSound:" destination="Psr-YK-Cvi" eventType="touchUpInside" id="YLl-I4-OYh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxh-PT-tTv">
+                                <rect key="frame" x="16" y="401" width="343" height="48"/>
+                                <color key="backgroundColor" red="0.18722975250000001" green="0.19625717400000001" blue="0.20410755280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="5KH-uK-bQS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
+                                <state key="normal" title="Restore Ads remover">
+                                    <color key="titleColor" red="0.83912670609999995" green="0.83926838640000001" blue="0.83910673859999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonSound:" destination="Psr-YK-Cvi" eventType="touchUpInside" id="fUu-hC-Fjr"/>
+                                    <action selector="restoreAdRemover:" destination="Psr-YK-Cvi" eventType="touchUpInside" id="GZ2-LQ-P9k"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YrE-5I-EAN" firstAttribute="trailing" secondItem="S7T-K0-KmZ" secondAttribute="trailing" id="0ls-jG-Scw"/>
                             <constraint firstItem="TBi-nt-GBk" firstAttribute="leading" secondItem="S7T-K0-KmZ" secondAttribute="leading" constant="16" id="5Pc-qt-KgB"/>
                             <constraint firstItem="NTu-ra-v9q" firstAttribute="leading" secondItem="S7T-K0-KmZ" secondAttribute="leading" constant="16" id="5QU-p2-Xqn"/>
+                            <constraint firstItem="S7T-K0-KmZ" firstAttribute="trailing" secondItem="Xxh-PT-tTv" secondAttribute="trailing" constant="16" id="6gG-Xw-VRr"/>
                             <constraint firstItem="3IT-sG-Ihf" firstAttribute="leading" secondItem="S7T-K0-KmZ" secondAttribute="leading" constant="16" id="7J5-iZ-CoF"/>
                             <constraint firstItem="S7T-K0-KmZ" firstAttribute="trailing" secondItem="3IT-sG-Ihf" secondAttribute="trailing" constant="16" id="7Qy-5l-Ap1"/>
                             <constraint firstItem="YrE-5I-EAN" firstAttribute="leading" secondItem="S7T-K0-KmZ" secondAttribute="leading" id="A7z-zc-NDS"/>
@@ -182,12 +198,14 @@
                             <constraint firstItem="S7T-K0-KmZ" firstAttribute="trailing" secondItem="OWe-7v-shh" secondAttribute="trailing" constant="16" id="BwR-h5-6Ml"/>
                             <constraint firstItem="jOD-eB-pX5" firstAttribute="leading" secondItem="S7T-K0-KmZ" secondAttribute="leading" constant="16" id="FHE-Wz-UYw"/>
                             <constraint firstItem="S7T-K0-KmZ" firstAttribute="trailing" secondItem="7cn-AN-b83" secondAttribute="trailing" constant="16" id="GNH-FI-fbz"/>
+                            <constraint firstItem="Xxh-PT-tTv" firstAttribute="top" secondItem="NTu-ra-v9q" secondAttribute="bottom" constant="16" id="SIl-dW-XwE"/>
                             <constraint firstItem="S7T-K0-KmZ" firstAttribute="trailing" secondItem="TBi-nt-GBk" secondAttribute="trailing" constant="16" id="T1Z-MX-LBv"/>
                             <constraint firstItem="3IT-sG-Ihf" firstAttribute="top" secondItem="7cn-AN-b83" secondAttribute="bottom" constant="16" id="Uah-sS-AXn"/>
                             <constraint firstItem="7cn-AN-b83" firstAttribute="top" secondItem="TBi-nt-GBk" secondAttribute="bottom" constant="16" id="XXa-qQ-Hld"/>
                             <constraint firstItem="7cn-AN-b83" firstAttribute="leading" secondItem="S7T-K0-KmZ" secondAttribute="leading" constant="16" id="aAP-JO-AgK"/>
                             <constraint firstItem="S7T-K0-KmZ" firstAttribute="bottom" secondItem="jOD-eB-pX5" secondAttribute="bottom" constant="16" id="aZT-ZA-coE"/>
                             <constraint firstItem="TBi-nt-GBk" firstAttribute="top" secondItem="OWe-7v-shh" secondAttribute="bottom" constant="16" id="c9t-Yx-roM"/>
+                            <constraint firstItem="Xxh-PT-tTv" firstAttribute="leading" secondItem="S7T-K0-KmZ" secondAttribute="leading" constant="16" id="jSe-6O-Vc5"/>
                             <constraint firstItem="OWe-7v-shh" firstAttribute="top" secondItem="S7T-K0-KmZ" secondAttribute="top" constant="16" id="nIE-e6-F1L"/>
                             <constraint firstItem="OWe-7v-shh" firstAttribute="leading" secondItem="S7T-K0-KmZ" secondAttribute="leading" constant="16" id="nyg-yM-ayS"/>
                             <constraint firstItem="S7T-K0-KmZ" firstAttribute="trailing" secondItem="jOD-eB-pX5" secondAttribute="trailing" constant="16" id="oAD-Y6-Km0"/>
@@ -289,6 +307,7 @@
                             <constraint firstAttribute="bottom" secondItem="MKX-ha-PJJ" secondAttribute="bottom" id="3e8-gb-vAa"/>
                             <constraint firstItem="90S-zH-w0x" firstAttribute="bottom" secondItem="ijv-iY-HIW" secondAttribute="bottom" id="6bJ-il-jaq"/>
                             <constraint firstItem="2B6-rN-mNm" firstAttribute="top" secondItem="AxC-yB-WK9" secondAttribute="bottom" constant="26.329999999999998" id="6pH-d3-10w"/>
+                            <constraint firstItem="AFx-Jb-PSL" firstAttribute="top" secondItem="ijv-iY-HIW" secondAttribute="bottom" constant="-85" id="7Yy-62-MwX"/>
                             <constraint firstItem="ijv-iY-HIW" firstAttribute="trailing" secondItem="AxC-yB-WK9" secondAttribute="trailing" constant="16" id="8Xt-yj-hta"/>
                             <constraint firstItem="ijv-iY-HIW" firstAttribute="trailing" secondItem="90S-zH-w0x" secondAttribute="trailing" constant="28" id="C6c-wp-SL4"/>
                             <constraint firstItem="MKX-ha-PJJ" firstAttribute="leading" secondItem="ijv-iY-HIW" secondAttribute="leading" id="EKO-s4-Tj0"/>
@@ -602,7 +621,7 @@
         <image name="Reset" width="102" height="102"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CkA-ML-uge"/>
-        <segue reference="LtM-my-mmq"/>
+        <segue reference="Snc-cX-TE7"/>
+        <segue reference="Mwg-Qg-HVS"/>
     </inferredMetricsTieBreakers>
 </document>

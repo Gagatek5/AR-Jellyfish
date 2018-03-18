@@ -28,17 +28,12 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
         productsRequest = SKProductsRequest(productIdentifiers: productIds)
         productsRequest.delegate = self
         productsRequest.start()
-        print("t")
-        print(productsRequest)
-        print(IAP_REMOVE_ADS)
-        print(products.count)
+
         
     }
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print(response.products.count)
         
         if response.products.count > 0  {
-            print(response.products.debugDescription)
             products = response.products
         }
         

@@ -24,7 +24,7 @@ class TutorialVC: UIViewController {
     var item = 0
     var countdown = 0
     var chapter = 0
-    let tutorialText = ["Click on node to get point","Click on node to get 3 points","Click on node to get 5 points", "If you click on bomb, you lose the game", "You can collect coins to buy skins and power up", "clock give you more time ( 5 seconds )", "Congratulations. Tutorial END. Click button to return to menu" ]
+    let tutorialText = ["Click on node to get point","Click on node to get 3 points","Click on node to get 5 points", "If you click on bomb, you lose the game", "You can collect coins to buy skins and power up", "clock give you more time ( 5 seconds )", "Congratulations. On game you must look around Click button to return to menu" ]
     
     override func viewDidLoad() {
         super.viewDidLoad()

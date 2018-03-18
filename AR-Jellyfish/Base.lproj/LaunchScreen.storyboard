@@ -23,9 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="pon-Qm-oL0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="pon-Qm-oL0">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Catch the fish" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXA-RA-ZDZ">
                                 <rect key="frame" x="16" y="44" width="343" height="734"/>
@@ -36,10 +35,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bXA-RA-ZDZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="VGM-ai-dy6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bXA-RA-ZDZ" secondAttribute="trailing" constant="16" id="lzx-be-1Bd"/>
-                            <constraint firstItem="bXA-RA-ZDZ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xzg-js-3l1"/>
-                            <constraint firstItem="bXA-RA-ZDZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yNg-rd-w4R"/>
+                            <constraint firstItem="pon-Qm-oL0" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="0N2-9i-v31"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bXA-RA-ZDZ" secondAttribute="trailing" constant="16" id="Kr1-qN-AGS"/>
+                            <constraint firstItem="bXA-RA-ZDZ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="NJP-9H-rcg"/>
+                            <constraint firstAttribute="bottom" secondItem="pon-Qm-oL0" secondAttribute="bottom" id="Unj-yg-oib"/>
+                            <constraint firstItem="pon-Qm-oL0" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Wi5-hg-iEe"/>
+                            <constraint firstItem="pon-Qm-oL0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fpi-fE-SVB"/>
+                            <constraint firstItem="bXA-RA-ZDZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="jdi-yg-j8q"/>
+                            <constraint firstItem="bXA-RA-ZDZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ydR-3v-9Ih"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -230,7 +230,6 @@ class ARVC: UIViewController, GADInterstitialDelegate {
                 {
                     for index in 0...5
                     {
-                        //  print("index: " + String(index))
                         if node.name! == tabel[index] && countdown == 1
                         {
                             self.countdown += 1
@@ -304,9 +303,7 @@ class ARVC: UIViewController, GADInterstitialDelegate {
 
         if interstitial.isReady {
             interstitial.present(fromRootViewController: self)
-        } else {
-            print("Ad wasn't ready" + String(ad))
-        }
+        } 
     }
 }
 

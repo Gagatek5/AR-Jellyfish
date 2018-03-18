@@ -39,10 +39,14 @@ class SettingVC: UIViewController {
     
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func restoreAdRemover(_ sender: Any) {
+        
+        PurchaseManager.instance.restorePurchases { success in
+            if success {}
+        }
+        
     }
+    
     @IBAction func RemoveAds(_ sender: Any) {
 
         PurchaseManager.instance.purchaseRemoveAds {_ in }

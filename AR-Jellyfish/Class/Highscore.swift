@@ -18,8 +18,8 @@ class Highscore{
     {
         if (defaultsPoints.value(forKey: "HighScore") == nil)
         {
-             highscores = [11, 10, 5, 3, 1]
-             nickNames = ["Ben", "Rob", "Master", "Fin", "GG"]
+             highscores = [50, 30, 10, 5, 1]
+             nickNames = ["Player1", "Player2", "Player3", "Player4", "Player5"]
         } else
         {
             highscores = (defaultsPoints.array(forKey: "HighScore") as? [Int])!
@@ -44,11 +44,6 @@ class Highscore{
                 break
             }
         }
-//        for index in 0...4{
-//
-//            print(nickNames[index], " ", highscores[index])
-//
-//        }
         defaultsPoints.set(highscores, forKey: "HighScore")
         defaultsPoints.set(nickNames, forKey: "NickName")
         
