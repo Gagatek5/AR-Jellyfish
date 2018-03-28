@@ -9,14 +9,10 @@
 import UIKit
 import AVFoundation
 
-
 class SetNickNameVC: UIViewController, UITextFieldDelegate {
     
     let defaultsUserName = UserDefaults.standard
     var player: AVAudioPlayer?
-    
-    let soundFile = SoundFile()
-    let sound = SoundsEfect()
     
     @IBOutlet weak var InfoL: UILabel!
     @IBOutlet weak var inputTF: UITextField!
@@ -47,7 +43,7 @@ class SetNickNameVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func setNickName(_ sender: Any) {
 
-        sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+        SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
         defaultsUserName.set(inputTF.text, forKey: "UserName")
     }
  

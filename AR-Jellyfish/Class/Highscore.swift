@@ -50,13 +50,11 @@ class Highscore{
     }
    public func getScore() -> [Int]
     {
-        highscores = (defaultsPoints.array(forKey: "HighScore") as? [Int])!
-        return highscores
+        return (defaultsPoints.array(forKey: "HighScore") as? [Int])!
     }
     public func getNickName() -> [String]
     {
-        nickNames = (defaultsPoints.array(forKey: "NickName") as? [String])!
-        return nickNames
+        return (defaultsPoints.array(forKey: "NickName") as? [String])!
     }
 
 }

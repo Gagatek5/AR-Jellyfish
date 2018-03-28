@@ -10,8 +10,6 @@ import UIKit
 
 class SettingVC: UIViewController {
     
-    let soundFile = SoundFile()
-    let sound = SoundsEfect()
     let soundForAll = AppDelegate()
     
     @IBOutlet weak var MusicButtonOutlet: UIButton!
@@ -54,7 +52,7 @@ class SettingVC: UIViewController {
     }
 
     @IBAction func buttonSound(_ sender: Any) {
-        sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+        SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
     }
     @IBAction func SoundOnOff(_ sender: Any) {
         
@@ -77,7 +75,7 @@ class SettingVC: UIViewController {
         {
             UserDefaults.standard.setValue(Bool(false), forKey: "Music")
             MusicButtonOutlet.setTitle("Music on", for: .normal)
-            sound.stopAll()
+            SoundsEfect.instance.stopAll()
             
         } else {
             UserDefaults.standard.setValue(Bool(true), forKey: "Music")

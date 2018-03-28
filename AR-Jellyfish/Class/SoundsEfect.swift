@@ -6,17 +6,20 @@
 //  Copyright © 2018 Tom. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
 
 class SoundsEfect
 {
+    private init() {}
+    static let instance = SoundsEfect()
+    
     var player: AVAudioPlayer?
     static var audioPlayers = [AVAudioPlayer]()
     static var approve = true
+    
     public func playSound(fileName: String, fileExtension: String, loop: Bool? = false){
-        
-        if SoundsEfect.approve || loop!  {
+        //play if on setting (approve sounds can be play or loop is for music)
+        if SoundsEfect.approve || loop!{
             
             let path = Bundle.main.path(forResource: fileName + fileExtension, ofType:nil)!
             let url = URL(fileURLWithPath: path)
@@ -33,14 +36,10 @@ class SoundsEfect
             SoundsEfect.audioPlayers.append(player!)
         }
     }
+    
     public func stopAll(){
-        
         for player in SoundsEfect.audioPlayers {
-            
             player.stop()
-            
-            
-            
         }
     }
 }

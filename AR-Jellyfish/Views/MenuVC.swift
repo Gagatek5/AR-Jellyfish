@@ -10,9 +10,6 @@ import UIKit
 import GoogleMobileAds
 
 class MenuVC: UIViewController, GADBannerViewDelegate {
-
-    let sound = SoundsEfect()
-    let soundFile = SoundFile()
     
     @IBOutlet weak var CoinLabel: UILabel!
     
@@ -40,6 +37,6 @@ class MenuVC: UIViewController, GADBannerViewDelegate {
 
     }
     @IBAction func buttonSound(_ sender: Any) {
-        sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+        SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
     }
 }

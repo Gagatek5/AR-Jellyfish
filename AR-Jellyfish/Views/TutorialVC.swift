@@ -11,16 +11,12 @@ import ARKit
 import Each
 
 class TutorialVC: UIViewController {
-
     
     @IBOutlet weak var tutorialSceneView: ARSCNView!
     @IBOutlet weak var tutorialTV: UITextView!
-    let sound = SoundsEfect()
-    let soundFile = SoundFile()
+    
     let configuration = ARWorldTrackingConfiguration()
     
-    var nodeObject = NodeCreator()
-    let random = RandomNumberGenerator()
     var item = 0
     var countdown = 0
     var chapter = 0
@@ -32,15 +28,15 @@ class TutorialVC: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         self.tutorialSceneView.addGestureRecognizer(tapGestureRecognizer)
         addNodeToScene()
-
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func buttonSound(_ sender: Any) {
-        sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+        SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
     }
     func addNodeToScene() {
         
-
+        
         switch chapter {
         case 0:
             item = 0
@@ -60,7 +56,7 @@ class TutorialVC: UIViewController {
         tutorialTV.text = tutorialText[item]
         //self.tutorialSceneView.scene.rootNode.addChildNode(nodeObject.addNode(colour: item + 6, generateBy: "Chapter"))
         if item != 6 {
-        self.tutorialSceneView.scene.rootNode.addChildNode(nodeObject.addNode(colour: item, generateBy: "Target"))
+            self.tutorialSceneView.scene.rootNode.addChildNode(NodeCreator.instance.addNode(colour: item, generateBy: "Target"))
         }
         
     }
@@ -78,22 +74,22 @@ class TutorialVC: UIViewController {
             {
                 
                 SCNTransaction.begin()
-                nodeObject.animationNode(node: node)
-                 switch  chapter{
+                NodeCreator.instance.animationNode(node: node)
+                switch  chapter{
                 case 0:
-                    sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                    SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
                 case 1:
-                    sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                    SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
                 case 2:
-                    sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                    SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
                 case 3:
-                    sound.playSound(fileName: soundFile.FileName(fileNumber: 1), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                    SoundsEfect.instance.playSound(fileName: fileName.bomb2.rawValue, fileExtension: fileExtension.wav.rawValue)
                 case 4:
-                    sound.playSound(fileName: soundFile.FileName(fileNumber: 6), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                    SoundsEfect.instance.playSound(fileName: fileName.coin.rawValue, fileExtension: fileExtension.wav.rawValue)
                 case 5:
-                    sound.playSound(fileName: soundFile.FileName(fileNumber: 5), fileExtension: soundFile.FileExtension(fileNumber: 0))
+                    SoundsEfect.instance.playSound(fileName: fileName.clock.rawValue, fileExtension: fileExtension.mp3.rawValue)
                 default:
-                    sound.playSound(fileName: soundFile.FileName(fileNumber: 4), fileExtension: soundFile.FileExtension(fileNumber: 1))
+                    SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
                 }
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 SCNTransaction.completionBlock = {
@@ -107,21 +103,7 @@ class TutorialVC: UIViewController {
             }
         }
     }
-   
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
+
