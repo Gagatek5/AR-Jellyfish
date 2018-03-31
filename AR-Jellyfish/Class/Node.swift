@@ -9,43 +9,49 @@
 
 import ARKit
 
-enum NodeName{
-    case fish
-    case coin
-    case bomb
-    case clock
+enum NodeName: String{
+    case fish = "GreenFish"
+    case fishBlue = "BlueFish"
+    case fishRed = "RedFish"
+    case coin = "Coin"
+    case bomb = "Bomb"
+    case clock = "Clock"
+    case empty = ""
+    
+    static let allNode = [fish, fishRed, fishBlue, coin, bomb, clock]
 }
 
 class Node{
     private init() {}
     static let instance = Node()
-    func Sound(type: NodeName){
+    func Sound(type: NodeName.RawValue){
         switch type {
-        case .coin:
+        case NodeName.coin.rawValue :
             SoundsEfect.instance.playSound(fileName: fileName.coin.rawValue, fileExtension: fileExtension.wav.rawValue)
-        case .clock:
+        case NodeName.clock.rawValue:
             SoundsEfect.instance.playSound(fileName: fileName.clock.rawValue, fileExtension: fileExtension.mp3.rawValue)
-        case .bomb:
+        case NodeName.bomb.rawValue:
             SoundsEfect.instance.playSound(fileName: fileName.bomb2.rawValue, fileExtension: fileExtension.wav.rawValue)
         default:
             SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
         }
         
     }
-    func addNodeToScene() -> SCNNode {
-        if RandomNumberGenerator.instance.randomNode(type: NodeName.fish, maxPercent: 10) <= 2 {
-            return NodeCreator.instance.addNode(colour: RandomNumberGenerator.instance.randomNode(type: NodeName.fish, maxPercent: 10), generateBy: "Random")
+    func addNodeToScene(node: NodeName, generateBy: modeCreator) -> SCNNode? {
+        if generateBy == .Random{
+            switch node {
+            case .fish, .fishBlue, .fishRed, .empty:
+                return NodeCreator.instance.addNode(node: RandomNumberGenerator.instance.randomNode(type: node, maxPercent: 10), generateBy: generateBy)
+            case .bomb, .coin, .clock:
+                return NodeCreator.instance.addNode(node: RandomNumberGenerator.instance.randomNode(type: node, maxPercent: 4), generateBy: generateBy)
+            }
+        }else {
+            switch node {
+            case .fish, .fishBlue, .fishRed, .empty:
+                return NodeCreator.instance.addNode(node: node, generateBy: generateBy)
+            case .bomb, .coin, .clock:
+                return NodeCreator.instance.addNode(node:node, generateBy: generateBy)
+            }
         }
-        if RandomNumberGenerator.instance.randomNode(type: NodeName.bomb, maxPercent: 4) == 3{
-            return NodeCreator.instance.addNode(colour: 3, generateBy: "Random")
-        }
-        if RandomNumberGenerator.instance.randomNode(type: NodeName.coin, maxPercent: 10) == 4{
-            return NodeCreator.instance.addNode(colour: 4, generateBy: "Random")
-        }
-        if RandomNumberGenerator.instance.randomNode(type: NodeName.clock, maxPercent: 3) == 5{
-            return NodeCreator.instance.addNode(colour: 5, generateBy: "Random")
-        }
-        return NodeCreator.instance.addNode(colour: 5, generateBy: "Random")
     }
-   
 }

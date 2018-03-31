@@ -16,7 +16,7 @@ class ARVC: UIViewController, GADInterstitialDelegate {
     
     //sounds
     
-
+    
     var player: AVAudioPlayer?
     //timer
     var timer = Each(1).seconds
@@ -108,7 +108,7 @@ class ARVC: UIViewController, GADInterstitialDelegate {
     
     @IBAction func play(_ sender: Any) {
         setTimer()
-        self.addNodeToScene()
+        addAll()
         self.play.isEnabled = false
         self.pointsLabel.isHidden = true
         self.menu.isEnabled = false
@@ -162,28 +162,8 @@ class ARVC: UIViewController, GADInterstitialDelegate {
         
     }
     
-    
-    func addNodeToScene() {
-        colour = RandomNumberGenerator.instance.randomColourNode()
-        let bomb = RandomNumberGenerator.instance.randomCreateBombNode()
-        let coin = RandomNumberGenerator.instance.randomCreateCoinNode()
-        let clock = RandomNumberGenerator.instance.randomCreateClockNode()
-        self.sceneView.scene.rootNode.addChildNode(NodeCreator.instance.addNode(colour: colour, generateBy: "Random"))
-        if bomb == 3{
-            self.sceneView.scene.rootNode.addChildNode(NodeCreator.instance.addNode(colour: bomb, generateBy: "Random"))
-        }
-        if coin == 4{
-            self.sceneView.scene.rootNode.addChildNode(NodeCreator.instance.addNode(colour: coin, generateBy: "Random"))
-        }
-        if clock == 5{
-            self.sceneView.scene.rootNode.addChildNode(NodeCreator.instance.addNode(colour: clock, generateBy: "Random"))
-        }
-        
-    }
-    
     @objc func handleTap(sender: UITapGestureRecognizer)
     {
-        let tabel = NodeCreator.instance.nodesChildArray
         let sceneViewTappedOn = sender.view as! SCNView
         let touchCoordinates = sender.location(in: sceneViewTappedOn)
         let hitTest = sceneViewTappedOn.hitTest(touchCoordinates)
@@ -192,32 +172,24 @@ class ARVC: UIViewController, GADInterstitialDelegate {
             let result = hitTest.first!
             let node = result.node
             
-            if node.name! == "Bomb"
+            
+            if node.name! == NodeName.bomb.rawValue
             {
-               SoundsEfect.instance.playSound(fileName: fileName.bomb2.rawValue, fileExtension: fileExtension.wav.rawValue)
                 countdown = 0
                 points = 0
-                
             }
-            
-            
             if countdown > 0{
-                
+                Node.instance.Sound(type: node.name!)
                 switch  node.name! {
-                case tabel[0]:
-                   SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
+                case NodeName.fish.rawValue:
                     points += 1
-                case tabel[1]:
-                    SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
+                case NodeName.fishRed.rawValue:
                     points += 3
-                case tabel[2]:
-                    SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
+                case NodeName.fishBlue.rawValue:
                     points += 5
-                case tabel[4]:
-                    SoundsEfect.instance.playSound(fileName: fileName.coin.rawValue, fileExtension: fileExtension.wav.rawValue)
+                case NodeName.coin.rawValue:
                     coin += 1
-                case tabel[5]:
-                    SoundsEfect.instance.playSound(fileName: fileName.clock.rawValue, fileExtension: fileExtension.wav.rawValue)
+                case NodeName.clock.rawValue:
                     countdown += 5
                 default:
                     points += 0
@@ -225,16 +197,11 @@ class ARVC: UIViewController, GADInterstitialDelegate {
                 
                 if node.animationKeys.isEmpty
                 {
-                    for index in 0...5
+                    
+                    if countdown == 1
                     {
-                        if node.name! == tabel[index] && countdown == 1
-                        {
-                            self.countdown += 1
-                        }
-                        
+                        self.countdown += 1
                     }
-                    
-                    
                     SCNTransaction.begin()
                     NodeCreator.instance.animationNode(node: node)
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -243,10 +210,9 @@ class ARVC: UIViewController, GADInterstitialDelegate {
                         
                         for index in 0...2
                         {
-                            if node.name! == tabel[index]
+                            if node.name! == NodeName.allNode[index].rawValue
                             {
-                                
-                                self.sceneView.scene.rootNode.addChildNode(Node.instance.addNodeToScene())
+                                self.addAll()
                                 self.currentLevel = self.level.SelectLevel(points: self.points)
                                 self.restartTimer()
                             }
@@ -257,14 +223,24 @@ class ARVC: UIViewController, GADInterstitialDelegate {
             }
         }
     }
-    
+    func addAll(){
+        let list = [Node.instance.addNodeToScene(node: .fish, generateBy: .Random ), Node.instance.addNodeToScene(node: .bomb, generateBy: .Random), Node.instance.addNodeToScene(node: .coin, generateBy: .Random), Node.instance.addNodeToScene(node: .clock, generateBy: .Random)]
+        for index in list
+        {
+            if index != nil{
+                self.sceneView.scene.rootNode.addChildNode(index!)
+            }
+            
+        }
+        
+    }
     func setTimer(){
         self.timer.perform { () -> NextStep in
             self.countdown -= 1
             self.timerLabel.text = "Time: " + String(self.countdown) + " Points: " + String(self.points)
             if self.countdown <= 0
             {
-               SoundsEfect.instance.playSound(fileName: fileName.gameEnd.rawValue, fileExtension: fileExtension.wav.rawValue)
+                SoundsEfect.instance.playSound(fileName: fileName.gameEnd.rawValue, fileExtension: fileExtension.wav.rawValue)
                 self.timerLabel.text = String("You lose")
                 self.pointsLabel.text = "Your score: " + String(self.points)
                 self.pointsLabel.isHidden = false
@@ -297,10 +273,9 @@ class ARVC: UIViewController, GADInterstitialDelegate {
         }
     }
     func showAdd(){
-
+        
         if interstitial.isReady {
             interstitial.present(fromRootViewController: self)
-        } 
+        }
     }
 }
-

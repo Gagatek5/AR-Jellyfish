@@ -35,30 +35,10 @@ class TutorialVC: UIViewController {
         SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
     }
     func addNodeToScene() {
-        
-        
-        switch chapter {
-        case 0:
-            item = 0
-        case 1:
-            item = 1
-        case 2:
-            item = 2
-        case 3:
-            item = 3
-        case 4:
-            item = 4
-        case 5:
-            item = 5
-        default:
-            item = 6
+            tutorialTV.text = tutorialText[chapter]
+            if chapter != 6 {
+                self.tutorialSceneView.scene.rootNode.addChildNode(Node.instance.addNodeToScene(node: NodeName.allNode[chapter], generateBy: .Target)!)
         }
-        tutorialTV.text = tutorialText[item]
-        //self.tutorialSceneView.scene.rootNode.addChildNode(nodeObject.addNode(colour: item + 6, generateBy: "Chapter"))
-        if item != 6 {
-            self.tutorialSceneView.scene.rootNode.addChildNode(NodeCreator.instance.addNode(colour: item, generateBy: "Target"))
-        }
-        
     }
     @objc func handleTap(sender: UITapGestureRecognizer)
     {
@@ -72,25 +52,9 @@ class TutorialVC: UIViewController {
             
             if node.animationKeys.isEmpty
             {
-                
                 SCNTransaction.begin()
                 NodeCreator.instance.animationNode(node: node)
-                switch  chapter{
-                case 0:
-                    SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
-                case 1:
-                    SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
-                case 2:
-                    SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
-                case 3:
-                    SoundsEfect.instance.playSound(fileName: fileName.bomb2.rawValue, fileExtension: fileExtension.wav.rawValue)
-                case 4:
-                    SoundsEfect.instance.playSound(fileName: fileName.coin.rawValue, fileExtension: fileExtension.wav.rawValue)
-                case 5:
-                    SoundsEfect.instance.playSound(fileName: fileName.clock.rawValue, fileExtension: fileExtension.mp3.rawValue)
-                default:
-                    SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
-                }
+                Node.instance.Sound(type: node.name!)
                 AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 SCNTransaction.completionBlock = {
                     node.removeFromParentNode()
