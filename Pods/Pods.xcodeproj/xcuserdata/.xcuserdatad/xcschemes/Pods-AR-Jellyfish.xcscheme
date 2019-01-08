@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3C7A40F60CC3F81B3ABD9ED2563B89C0'
-               BlueprintName = 'Pods-AR-Jellyfish'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods-AR-Jellyfish.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3C7A40F60CC3F81B3ABD9ED2563B89C0"
+               BlueprintName = "Pods-AR-Jellyfish"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "Pods-AR-Jellyfish.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

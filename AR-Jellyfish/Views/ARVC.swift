@@ -15,12 +15,10 @@ import AVFoundation
 class ARVC: UIViewController, GADInterstitialDelegate {
     
     //sounds
-    
-    
     var player: AVAudioPlayer?
     //timer
     var timer = Each(1).seconds
-    var countdown = 10
+    var countdown = 10 + (UserDefaults.standard.value(forKey: UserDefaultsString.timeMultiply.rawValue) as? Int)!
     var points = 0
     var clicked = false
     //Ad
@@ -41,6 +39,7 @@ class ARVC: UIViewController, GADInterstitialDelegate {
     @IBOutlet weak var play: UIButton!
     @IBOutlet weak var restart: UIButton!
     @IBOutlet weak var menu: UIButton!
+    @IBOutlet weak var bombRemover: UIButton!
     // View
     @IBOutlet weak var menuView: UIView!
     // Labels
@@ -51,9 +50,7 @@ class ARVC: UIViewController, GADInterstitialDelegate {
     
     let configuration = ARWorldTrackingConfiguration()
     let checkScore = Highscore()
-    let playerStats = Player()
-    
-    
+
     //let runGame = RunGame()
     var level = Level()
     var currentLevel = Level.level.one
@@ -61,51 +58,35 @@ class ARVC: UIViewController, GADInterstitialDelegate {
     var coin = 0
     var ad = 0
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let request = GADRequest()
-        request.testDevices = ["e098db6da62dd89b815fbb21837caeeb"]
         checkScore.highscores(points: points, nickName: "none")
         self.menuView.isHidden = true
         self.restart.isEnabled = false
         self.sceneView.session.run(configuration)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        //let tapGestureRecognizer = runGame.createGesture()
         self.sceneView.addGestureRecognizer(tapGestureRecognizer)
         loadHighScore()
         roundView()
+        //self.bombRemover.titleLabel?.text = "Bomb remover \()"
         interstitial = createAndLoadInterstitial()
-        //interstitial.delegate = self
     }
     @IBAction func buttonSound(_ sender: Any) {
         SoundsEfect.instance.playSound(fileName: fileName.point.rawValue, fileExtension: fileExtension.wav.rawValue)
     }
     func createAndLoadInterstitial() -> GADInterstitial {
-        
         let interstitial = GADInterstitial(adUnitID: "ca-app-pub-5264924694211893/5195398237")
         interstitial.delegate = self
         interstitial.load(GADRequest())
-        
         return interstitial
     }
-    
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         interstitial = createAndLoadInterstitial()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func roundView()
     {
         menuView.layer.cornerRadius = 20
     }
-    
-    
-    
     @IBAction func play(_ sender: Any) {
         setTimer()
         addAll()
@@ -115,7 +96,6 @@ class ARVC: UIViewController, GADInterstitialDelegate {
         self.menuView.isHidden = true
         self.restart.isEnabled = true
     }
-    
     @IBAction func reset(_ sender: Any) {
         self.timer.stop()
         restartTimer()
@@ -132,9 +112,7 @@ class ARVC: UIViewController, GADInterstitialDelegate {
         self.menu.isEnabled = true // wygląd przycisku
         
     }
-    
     @IBAction func showMenu(_ sender: Any) {
-        
         if clicked == true
         {
             self.menuView.isHidden = true
@@ -147,7 +125,6 @@ class ARVC: UIViewController, GADInterstitialDelegate {
             loadHighScore()
             clicked = true
         }
-        
     }
     func loadHighScore(){
         var ListOfScore = checkScore.getScore()
@@ -159,9 +136,7 @@ class ARVC: UIViewController, GADInterstitialDelegate {
             labelArrayOfScore[index]?.text = String(ListOfScore[index]) as String
             labelArrayOfNickName[index]?.text = "\(index + 1). " +  listOfNickName[index]
         }
-        
     }
-    
     @objc func handleTap(sender: UITapGestureRecognizer)
     {
         let sceneViewTappedOn = sender.view as! SCNView
@@ -172,7 +147,6 @@ class ARVC: UIViewController, GADInterstitialDelegate {
             let result = hitTest.first!
             let node = result.node
             
-            
             if node.name! == NodeName.bomb.rawValue
             {
                 countdown = 0
@@ -182,22 +156,22 @@ class ARVC: UIViewController, GADInterstitialDelegate {
                 Node.instance.Sound(type: node.name!)
                 switch  node.name! {
                 case NodeName.fish.rawValue:
-                    points += 1
+                    points += (1 * (UserDefaults.standard.value(forKey: UserDefaultsString.score.rawValue) as? Int)!)
+                    var a = UserDefaults.standard.value(forKey: UserDefaultsString.payment.rawValue)! as! Array<Int>
+                    print((1 * a[0]))
                 case NodeName.fishRed.rawValue:
-                    points += 3
+                    points += (3 * (UserDefaults.standard.value(forKey: UserDefaultsString.score.rawValue) as? Int)!)
                 case NodeName.fishBlue.rawValue:
-                    points += 5
+                    points += (5 * (UserDefaults.standard.value(forKey: UserDefaultsString.score.rawValue) as? Int)!)
                 case NodeName.coin.rawValue:
-                    coin += 1
+                    coin += (1 * (UserDefaults.standard.value(forKey: UserDefaultsString.coinMultiply.rawValue) as? Int)!)
                 case NodeName.clock.rawValue:
-                    countdown += 5
+                    countdown += (5 + (UserDefaults.standard.value(forKey: UserDefaultsString.timeMultiply.rawValue) as? Int)!)
                 default:
                     points += 0
                 }
-                
                 if node.animationKeys.isEmpty
                 {
-                    
                     if countdown == 1
                     {
                         self.countdown += 1
@@ -230,9 +204,20 @@ class ARVC: UIViewController, GADInterstitialDelegate {
             if index != nil{
                 self.sceneView.scene.rootNode.addChildNode(index!)
             }
-            
         }
-        
+    }
+    
+    @IBAction func removeBombButton(_ sender: Any) {
+        if (UserDefaults.standard.value(forKey: UserDefaultsString.bombRemover.rawValue) as? Int)! > 0
+        {
+            sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
+                if (node.name == NodeName.bomb.rawValue)
+                {
+                    node.removeFromParentNode()
+                }
+            }
+            Player.instance.updateBombRemover(false)
+        }
     }
     func setTimer(){
         self.timer.perform { () -> NextStep in
@@ -244,13 +229,13 @@ class ARVC: UIViewController, GADInterstitialDelegate {
                 self.timerLabel.text = String("You lose")
                 self.pointsLabel.text = "Your score: " + String(self.points)
                 self.pointsLabel.isHidden = false
-                self.checkScore.highscores(points: self.points, nickName: UserDefaults.standard.value(forKey: "UserName") as! String)
+                self.checkScore.highscores(points: self.points, nickName: UserDefaults.standard.value(forKey: UserDefaultsString.userName.rawValue) as! String)
                 self.menu.isEnabled = true
                 if UserDefaults.standard.bool(forKey: PurchaseManager.instance.IAP_REMOVE_ADS) == false
                 {
                     self.showAdd()
                 }
-                self.playerStats.updateCoin(coins: self.coin)
+                Player.instance.addCoin(coins: self.coin)
                 self.coin = 0
                 return .stop
             }
@@ -258,22 +243,20 @@ class ARVC: UIViewController, GADInterstitialDelegate {
         }
     }
     func restartTimer() {
-        
         switch currentLevel {
         case Level.level.one:
-            self.countdown = 10
+            self.countdown = 10 + (UserDefaults.standard.value(forKey: UserDefaultsString.timeMultiply.rawValue) as? Int)!
         case Level.level.two:
-            self.countdown = 8
+            self.countdown = 8 + (UserDefaults.standard.value(forKey: UserDefaultsString.timeMultiply.rawValue) as? Int)!
         case Level.level.three:
-            self.countdown = 7
+            self.countdown = 7 + (UserDefaults.standard.value(forKey: UserDefaultsString.timeMultiply.rawValue) as? Int)!
         case Level.level.four:
-            self.countdown = 6
+            self.countdown = 6 + (UserDefaults.standard.value(forKey: UserDefaultsString.timeMultiply.rawValue) as? Int)!
         case Level.level.five:
-            self.countdown = 5
+            self.countdown = 5 + (UserDefaults.standard.value(forKey: UserDefaultsString.timeMultiply.rawValue) as? Int)!
         }
     }
     func showAdd(){
-        
         if interstitial.isReady {
             interstitial.present(fromRootViewController: self)
         }

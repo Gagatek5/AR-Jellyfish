@@ -11,12 +11,9 @@ typealias CompletionHandler = (_ success: Bool) -> ()
 import Foundation
 import StoreKit
 
-
-
 class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     static let instance = PurchaseManager()
-    
     let IAP_REMOVE_ADS = "Do.This.App.AR.Jellyfishs.ad"
    
     var productsRequest: SKProductsRequest!
@@ -28,25 +25,22 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
         productsRequest = SKProductsRequest(productIdentifiers: productIds)
         productsRequest.delegate = self
         productsRequest.start()
-
-        
     }
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        
         if response.products.count > 0  {
             products = response.products
         }
-        
     }
     func purchaseRemoveAds(onComplete: @escaping CompletionHandler) {
-
         if SKPaymentQueue.canMakePayments() && products.count > 0 {
             transactionComplete = onComplete
             let removeAdsProduct = products[0]
             let payment = SKPayment(product: removeAdsProduct)
             SKPaymentQueue.default().add(self)
             SKPaymentQueue.default().add(payment)
-        } else {
+        }
+        else
+        {
             onComplete(false)
         }
     }
@@ -59,11 +53,7 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
         } else {
             onComplete(false)
         }
-        
     }
-    
-
-    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch transaction.transactionState {
@@ -91,4 +81,3 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
         }
     }
 }
-

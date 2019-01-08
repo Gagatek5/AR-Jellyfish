@@ -48,7 +48,7 @@ class Highscore{
         defaultsPoints.set(nickNames, forKey: "NickName")
         
     }
-   public func getScore() -> [Int]
+    public func getScore() -> [Int]
     {
         return (defaultsPoints.array(forKey: "HighScore") as? [Int])!
     }

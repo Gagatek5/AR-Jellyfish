@@ -6,14 +6,11 @@
 //  Copyright © 2018 Tom. All rights reserved.
 //
 
-
 import Foundation
 
 enum fileName: String{
     case  background = "background"
     case  bomb2 = "bomb2"
-    case  boom = "boom"
-    case  buttonSound = "buttonSound"
     case  point = "point"
     case  clock = "clock"
     case  coin = "coin"

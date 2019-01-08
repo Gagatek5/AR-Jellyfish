@@ -26,6 +26,7 @@ class SoundsEfect
             
             do {
                 player = try AVAudioPlayer(contentsOf: url)
+                
                 player?.play()
             } catch {
             }
